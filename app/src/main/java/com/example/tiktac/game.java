@@ -114,19 +114,20 @@ public class game extends AppCompatActivity {
         C.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                played(C);
-                AI_easy();
-               if(checkWiner().equals(player)){
-                    playerScore.setText(String.valueOf(Integer.valueOf(playerScore.getText().toString())+1));
-                    Win(playerName.getText().toString());
+                if (C.getText().toString().equals("")) {
+                    played(C);
+                    AI_easy();
+                    if (checkWiner().equals(player)) {
+                        playerScore.setText(String.valueOf(Integer.valueOf(playerScore.getText().toString()) + 1));
+                        Win(playerName.getText().toString());
+
+                    }
+                    if (checkWiner().equals(computer)) {
+                        computerScore.setText(String.valueOf(Integer.valueOf(computerScore.getText().toString()) + 1));
+                        Win("Computer");
+                    }
 
                 }
-                if(checkWiner().equals(computer)){
-                    computerScore.setText(String.valueOf(Integer.valueOf(computerScore.getText().toString())+1));
-                    Win("Computer");
-                }
-
-
             }
         });
     }
