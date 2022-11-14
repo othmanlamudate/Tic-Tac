@@ -27,7 +27,7 @@
         android:id="@+id/play"
         android:layout_width="164dp"
         android:layout_height="67dp"
-        android:layout_marginBottom="220dp"
+        android:layout_marginBottom="132dp"
         android:text="PLAY"
         android:textColor="#FF03DAC5"
         app:backgroundTint="@color/white"
@@ -44,13 +44,32 @@
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:text=""
+        android:hint="Player 2"
 
         app:backgroundTint="#FF9800"
         app:layout_constraintBottom_toTopOf="@+id/play"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.519" />
+        app:layout_constraintVertical_bias="0.236"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/name2"
+        android:layout_width="211dp"
+        android:layout_height="60dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:text=""
+        android:hint="Player 2"
+
+        app:backgroundTint="#FF9800"
+        app:layout_constraintBottom_toTopOf="@+id/play"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.807"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
