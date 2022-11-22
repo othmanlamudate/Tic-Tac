@@ -25,15 +25,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    flavorDimensions 'game_mode'
-    productFlavors {
-        single {
-            dimension 'game_mode'
-        }
-        Multiyplayer {
-            dimension 'game_mode'
-        }
-    }
+
 }
 
 dependencies {

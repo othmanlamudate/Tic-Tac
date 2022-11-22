@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class game extends AppCompatActivity {
-    private TextView playerScore,computerScore,playerName;
+    private TextView playerScore,computerScore,playerName,zoneC;
     private String player,computer;
     private Button C1;
     private Button C2;
@@ -28,6 +28,8 @@ public class game extends AppCompatActivity {
     private Button C9;
     private String lastplayer="X";
     private Button[][] XO=new Button[3][3];
+    private String IA="";
+    private int round=0;
 
     private TextView note;
     @Override
@@ -39,7 +41,7 @@ public class game extends AppCompatActivity {
 
         HashMap<String,String> data= (HashMap<String,String>) bundle.getSerializable("data");
 
-
+        IA=data.get("IA");
 
 
         try {
@@ -47,6 +49,8 @@ public class game extends AppCompatActivity {
             playerName=this.findViewById(R.id.playerName);
             playerScore=this.findViewById(R.id.playerScore);
             computerScore=this.findViewById(R.id.computerScore);
+            zoneC=this.findViewById(R.id.computer);
+            zoneC.setText(IA+" IA");
             playerName.setText(data.get("player").toUpperCase());
              C1=(Button) this.findViewById(R.id.C1) ;
              C2=(Button) this.findViewById(R.id.C2) ;
@@ -86,7 +90,14 @@ public class game extends AppCompatActivity {
                 computer=xoro[0];
             }
 
-
+            if(computer.equals("X")){
+                if(IA.equals("Easy")) {
+                    IA_easy();
+                }
+                if(IA.equals("Hard")) {
+                    IA_hard();
+                }
+            }
 
 
 
@@ -103,6 +114,7 @@ public class game extends AppCompatActivity {
     private Boolean played(Button b){
         if (b.getText().toString().equals("") && !b.getText().toString().equals(computer) ){
             b.setText(player);
+            round+=1;
             return  true;
         }
 
@@ -116,7 +128,12 @@ public class game extends AppCompatActivity {
             public void onClick(View v) {
                 if (C.getText().toString().equals("")) {
                     played(C);
-                    AI_easy();
+                    if(IA.equals("Easy")) {
+                        IA_easy();
+                    }
+                    if(IA.equals("Hard")) {
+                        IA_hard();
+                    }
                     if (checkWiner().equals(player)) {
                         playerScore.setText(String.valueOf(Integer.valueOf(playerScore.getText().toString()) + 1));
                         Win(playerName.getText().toString());
@@ -131,6 +148,8 @@ public class game extends AppCompatActivity {
             }
         });
     }
+
+
 
     private String checkWiner() {
         int i=0,c=0;
@@ -219,7 +238,7 @@ public class game extends AppCompatActivity {
     }
 
 
-    private  boolean AI_easy(){
+    private  boolean IA_easy(){
         int i=-1,o=-1;
 
         for(int k=0;k<3;k++){
@@ -239,6 +258,45 @@ public class game extends AppCompatActivity {
 
     }
 
+    private Boolean IA_hard() {
+
+
+            if (round==0) {
+                XO[1][1].setText(computer);
+            }
+            if(round==1){
+                if (XO[0][0].getText().toString().equals("")){
+                    XO[0][0].setText(computer);
+                }else
+                    if (XO[0][2].getText().toString().equals("")){
+                    XO[0][2].setText(computer);
+                }else
+                    if (XO[2][0].getText().toString().equals("")){
+                        XO[2][0].setText(computer);
+                }else
+                    if (XO[2][2].getText().toString().equals("")){
+                        XO[2][2].setText(computer);
+                }
+            }if(round==2){
+                if (XO[0][0].getText().toString().equals("")){
+                    XO[0][0].setText(computer);
+                }else
+                if (XO[0][2].getText().toString().equals("")){
+                    XO[0][2].setText(computer);
+                }else
+                if (XO[2][0].getText().toString().equals("")){
+                    XO[2][0].setText(computer);
+                }else
+                if (XO[2][2].getText().toString().equals("")){
+                    XO[2][2].setText(computer);
+                }
+            }
+
+
+
+
+        return true;
+    }
 
 
 
